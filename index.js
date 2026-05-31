@@ -48,6 +48,6 @@ document.getElementById('run').addEventListener("click", () => {
         </tr>
      </table>`;
 
-    if(distance < 9)
+    if(distance < 20)
         showPath(path, true);
 })
