@@ -1,46 +1,185 @@
-#map {
-    height: 700px;
-    border-radius: 10px;
-}
-.boxselect {
-    border-radius: 5px;
-    border: 1px solid #9a9aa7;
-    background-color: #e9e9ed;
-}
-select {
-    margin-left: 10px;
+/* Tích hợp phông chữ Inter hiện đại từ Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
+
+/* Thiết lập tổng thể trang web */
+body {
+    margin: 0;
+    padding: 15px 20px;
+    height: 100vh;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    font-family: 'Inter', sans-serif;
+    background-color: #f3f4f6; /* Nền xám nhạt giúp nổi bật các khối chức năng */
 }
 
-.source-pin {
-    fill : antiquewhite;
-}
-
-.des-pin {
-    color: aquamarine;
-}
+/* ================= Top Navigation (Thanh điều khiển) ================= */
 #topnav {
     display: flex;
     justify-content: space-between;
-    height: 30px;
-    padding: 10px;
-    margin-bottom: 10px;
-    border-radius: 10px;
-    background-color: #ffc0cb80;
+    align-items: center;
+    padding: 12px 24px;
+    margin-bottom: 15px;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+    flex-shrink: 0;
 }
-#topnav > div, 
-#topnav > div:first-of-type > p,
-.button {
+
+#topnav > div {
     display: flex;
     align-items: center;
-    justify-content: center;
+    gap: 15px; /* Tự động tạo khoảng cách đều giữa các phần tử */
 }
+
+/* Tiêu đề góc trái */
 #topnav > div:first-of-type > p {
-    height: 50px; 
-    padding-right: 10px;
-    border-right: 3px solid white; 
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #1f2937;
+    margin: 0;
+    padding-right: 15px;
+    border-right: 2px solid #e5e7eb;
 }
-#topnav button, .button {
-    height: 30px;
-    margin: 0 10px;
-    padding: 0 5px;
+
+/* ================= Nút bấm (Buttons) ================= */
+.button, #topnav button {
+    background-color: #3b82f6; /* Xanh dương đậm công nghệ */
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 8px 20px;
+    font-size: 0.95rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: 0 2px 4px rgba(59, 130, 246, 0.3);
+}
+
+.button:hover, #topnav button:hover {
+    background-color: #2563eb;
+    transform: translateY(-1px); /* Hiệu ứng nổi nhẹ khi di chuột */
+}
+
+#run {
+    background-color: #10b981; /* Nút Run màu xanh lá để nhấn mạnh */
+    box-shadow: 0 2px 4px rgba(16, 185, 129, 0.3);
+}
+#run:hover {
+    background-color: #059669;
+}
+
+/* ================= Hộp chọn (Select Boxes) ================= */
+.boxselect {
+    display: flex;
+    align-items: center;
+    background-color: #f9fafb;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    padding: 6px 12px;
+    font-size: 0.9rem;
+    color: #4b5563;
+    font-weight: 500;
+}
+
+select {
+    margin-left: 8px;
+    border: none;
+    background: transparent;
+    font-weight: 600;
+    color: #1f2937;
+    cursor: pointer;
+    outline: none;
+    padding-right: 5px;
+}
+
+/* ================= Bản đồ (Map Area) ================= */
+#map {
+    flex-grow: 1;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+    margin-bottom: 15px;
+    z-index: 1; /* Để bóng đổ không bị lỗi hiển thị */
+    border: 1px solid #e5e7eb;
+}
+
+/* Định dạng màu sắc của Icon Pin trên bản đồ */
+.source-pin { 
+    filter: hue-rotate(150deg); /* Chuyển icon Source sang tông màu khác */
+}
+.des-pin { 
+    filter: hue-rotate(300deg); /* Chuyển icon Des sang tông màu khác */
+}
+
+/* ================= Console (Bảng kết quả 1/6 màn hình) ================= */
+#console {
+    height: 16vh;
+    overflow-y: auto;
+    background-color: #ffffff;
+    border-radius: 12px;
+    padding: 15px 20px;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05);
+    flex-shrink: 0;
+    border: 1px solid #e5e7eb;
+}
+
+/* Tinh chỉnh Bảng (Table) bên trong Console */
+#console table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: center; /* Căn giữa nội dung */
+}
+
+#console th, #console td {
+    padding: 12px;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+#console th {
+    background-color: #f8fafc;
+    color: #475569;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    letter-spacing: 0.5px;
+}
+
+#console td {
+    color: #1f2937;
+    font-size: 0.95rem;
+}
+
+/* Hiệu ứng sáng dòng khi di chuột vào bảng kết quả */
+#console tr:hover td {
+    background-color: #f1f5f9;
+}
+
+/* ================= Tooltip Địa Danh ================= */
+.custom-landmark-tooltip {
+    background-color: #ffffff;
+    border: none;
+    border-radius: 12px;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    padding: 12px;
+    font-family: 'Inter', sans-serif;
+}
+
+/* Định dạng nội dung bên trong Tooltip */
+.landmark-tooltip-content {
+    text-align: center;
+}
+
+.landmark-tooltip-content b {
+    color: #1f2937;
+    font-size: 0.95rem;
+    display: block;
+    margin-bottom: 8px;
+}
+
+.landmark-tooltip-content img {
+    width: 200px; /* Kích thước ảnh */
+    height: auto;
+    border-radius: 8px;
+    object-fit: cover;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }

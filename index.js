@@ -4,6 +4,7 @@ let dummyTSP = document.getElementById('dummy-TSP').value;
 let mandatory = parseInt(document.getElementById('mandatory-point').value);
 clickMAX = mandatory + 2;
 
+
 handleMapClick(map)
 document.getElementById('show-map').addEventListener("click", () => showMap(map))
 document.getElementById('mandatory-point').addEventListener("change", () => reset(map))
