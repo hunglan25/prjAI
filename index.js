@@ -6,6 +6,11 @@ clickMAX = mandatory + 2;
 
 handleMapClick(map);
 document.getElementById('show-map').addEventListener("click", () => showMap(map));
+document.getElementById('reset-map').addEventListener("click", () => {
+    reset(map);
+    // Xóa trắng bảng kết quả
+    document.getElementById('console').innerHTML = '';
+});
 document.getElementById('mandatory-point').addEventListener("change", () => reset(map));
 
 // SỰ KIỆN CLICK NÚT RUN
@@ -49,8 +54,13 @@ document.getElementById('run').addEventListener("click", () => {
 
         // Bẫy lỗi đứt gãy đồ thị
         if (distance == null || distance > 90000) {
-            alert("⚠️ Không tìm thấy đường đi! Hai điểm này nằm trên các đoạn đường bị đứt gãy hoặc ngõ cụt. Vui lòng chọn điểm khác.");
-            return; 
+           const toast = document.getElementById('toast');
+            document.getElementById('toast-message').innerText = "⚠️ Không tìm thấy đường! Điểm bạn chọn nằm trên đoạn ngõ cụt.";
+            toast.classList.remove('hidden');
+            
+            // Tự động ẩn sau 4 giây
+            setTimeout(() => { toast.classList.add('hidden'); }, 4000);
+            return;
         }
 
         // Định dạng số liệu hiển thị

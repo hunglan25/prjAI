@@ -204,3 +204,20 @@ select {
     animation: spin 1s linear infinite;
 }
 @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+/* Hiệu ứng đường đi chuyển động */
+.animated-path {
+    stroke-dasharray: 10, 10; /* Tạo nét đứt */
+    animation: marching-ants 1s linear infinite; /* Chạy animation liên tục */
+}
+
+@keyframes marching-ants {
+    0% { stroke-dashoffset: 0; }
+    100% { stroke-dashoffset: -20; }
+}
+
+.btn-danger {
+    background-color: #ef4444 !important; /* Màu đỏ */
+}
+.btn-danger:hover {
+    background-color: #dc2626 !important;
+}
