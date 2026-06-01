@@ -833,7 +833,9 @@ function Greedy1(dummyTSP) {
             ? BnB(D, SOURCE, [...MANDATORY], DESTINATION)
             : (dummyTSP === 2) 
                 ? GA(D, SOURCE, [...MANDATORY], DESTINATION)
-                : { minDistance: null, bestScene: null };
+                : (dummyTSP === 3) 
+                    ? Greedy(D, SOURCE, [...MANDATORY], DESTINATION)
+                    : { minDistance: null, bestScene: null };
 
     if (!bestScene) {
         return { distance: null, path: null };

@@ -68,25 +68,37 @@ const ICON_BI_DES = L.icon(
 
 // build
 function map_build(id) {
-    // declare Leaflet map
-    const map = L.map(
-        id = id, 
-        options = {
-            center: DATA.center,
-            zoom: 16,
-        }
-    );
+    const map = L.map(id, {
+        center: DATA.center,
+        zoom: 16,
+    });
 
-    // Google Map Layer
-    L.tileLayer(
-        url = 'http://{s}.google.com/vt/lyrs=m&x={x}&y={y}&z={z}', 
-        options = {
-            subdomains:['mt0','mt1','mt2','mt3']
-        }
-    ).addTo(map);
+    // Các lớp bản đồ khác nhau
+    const googleStreets = L.tileLayer('http://{s}.google.com/vt/lyrs=m&x={x}&y={y}&z={z}', {
+        subdomains:['mt0','mt1','mt2','mt3']
+    });
 
-    return map
-};
+    const googleSat = L.tileLayer('http://{s}.google.com/vt/lyrs=s&x={x}&y={y}&z={z}', {
+        subdomains:['mt0','mt1','mt2','mt3']
+    });
+
+    const darkMap = L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+        attribution: '&copy; CartoDB'
+    });
+
+    // Mặc định hiển thị Google Streets
+    googleStreets.addTo(map);
+
+    // Thêm bộ điều khiển Layer ở góc phải bản đồ
+    const baseMaps = {
+        "🗺️ Bản đồ tiêu chuẩn": googleStreets,
+        "🛰️ Chế độ Vệ tinh": googleSat,
+        "🌙 Chế độ Ban đêm": darkMap
+    };
+    L.control.layers(baseMaps).addTo(map);
+
+    return map;
+}
 
 
 
