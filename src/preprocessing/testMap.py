@@ -1,7 +1,7 @@
 import os
 import requests
 import json
-from collections import defaultdict
+from collections import defaultdict 
 
 def save_result_to_file(result, file_path):
     list1Ways_formatted = [f"[{', '.join(map(str, way))}]" for way in result["list1Ways"]]
