@@ -1,4 +1,4 @@
-# BTL-AI-Nhóm9
+# BTL-AI
 
 - Main:  index.html
 - Insert Algo.:  index.js
