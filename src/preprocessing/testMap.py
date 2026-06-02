@@ -28,7 +28,7 @@ url = "https://overpass-api.de/api/interpreter"
 
 # Định nghĩa khung tọa độ (Bounding Box) bao quanh khu vực Lăng Bác
 # Cú pháp: (Nam, Tây, Bắc, Đông) tương đương (min_lat, min_lng, max_lat, max_lng)
-bbox = "21.0250,105.8200,21.0450,105.8500"
+bbox = "21.0300,105.8280,21.0420,105.8420"
 
 # Cú pháp truy vấn Overpass theo tọa độ thay vì tên phường
 query = f"""
