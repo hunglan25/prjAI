@@ -9,7 +9,7 @@ Hệ thống tìm đường đi ngắn nhất trên bản đồ
 - Thực hiện tìm đường đi ngắn nhất thông qua các thuật toán
 - Hiển thị khoảng cách, thời gian tìm kiếm và lộ trình trên bản đồ
 ## Công nghệ
--HTML/CSS/JavaScript
+- HTML/CSS/JavaScript
 - Leaflet.js
 - OpenStreetMap
 ## Cài đặt
